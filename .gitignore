@@ -1,0 +1,5 @@
+# .NET build output and fetched dependencies
+bin/
+obj/
+deps/
+dist/

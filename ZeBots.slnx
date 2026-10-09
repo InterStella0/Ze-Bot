@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/ZeBots.Logic/ZeBots.Logic.csproj" />
+    <Project Path="src/ZeBots/ZeBots.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/ZeBots.Logic.Tests/ZeBots.Logic.Tests.csproj" />
+  </Folder>
+</Solution>

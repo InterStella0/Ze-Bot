@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- The bot behavior without any game types, so it can be unit-tested off the server. -->
+  <PropertyGroup>
+    <AssemblyName>ZeBots.Logic</AssemblyName>
+    <RootNamespace>ZeBots.Logic</RootNamespace>
+  </PropertyGroup>
+
+</Project>

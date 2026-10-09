@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    The CounterStrikeSharp plugin: reads the game each pass, runs ZeBots.Logic, and drives bots
+    through CS2-Bot-Controller. CounterStrikeSharp and BotControllerApi are provided by the server,
+    so neither is copied into the output. deps/BotControllerApi.dll comes from fetch-deps.sh.
+  -->
+  <PropertyGroup>
+    <AssemblyName>ZeBots</AssemblyName>
+    <RootNamespace>ZeBots</RootNamespace>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CounterStrikeSharp.API" Version="1.0.376" ExcludeAssets="runtime" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="BotControllerApi">
+      <HintPath>../../deps/BotControllerApi.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../ZeBots.Logic/ZeBots.Logic.csproj" />
+  </ItemGroup>
+
+</Project>
