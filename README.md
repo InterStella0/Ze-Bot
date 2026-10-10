@@ -100,10 +100,10 @@ tar -xzf dist/ZeBots.tar.gz -C /path/to/game/csgo
 
 The version is `<Version>` in `Directory.Build.props`; the plugin reports it as its module version.
 CI (`.github/workflows/ci.yml`) runs `build.sh` on every push and PR. To release, bump the version,
-merge, then tag it:
+merge, then tag it. Versions stay `0.0.x` while the project is new.
 
 ```sh
-git tag v0.6.0 && git push origin v0.6.0
+git tag v0.0.2 && git push origin v0.0.2
 ```
 
 `release.yml` checks that the tag matches `<Version>`, builds, and publishes a GitHub release with
@@ -117,7 +117,7 @@ cs2ze-test's `Dockerfile` with a pinned download:
 
 ```dockerfile
 FROM base AS zebots
-ARG ZEBOTS_VERSION=0.5.0
+ARG ZEBOTS_VERSION=0.0.1
 ARG ZEBOTS_SHA256=<contents of the release's ZeBots.tar.gz.sha256>
 ADD --checksum=sha256:${ZEBOTS_SHA256} \
     https://github.com/InterStella0/Ze-Bot/releases/download/v${ZEBOTS_VERSION}/ZeBots.tar.gz \
