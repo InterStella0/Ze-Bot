@@ -8,6 +8,8 @@
 Zombie Escape bot AI for CS2, as a [CounterStrikeSharp](https://github.com/roflmuffin/CounterStrikeSharp)
 plugin that drives bots through [CS2-Bot-Controller](https://github.com/XBribo/CS2-Bot-Controller).
 
+https://github.com/user-attachments/assets/f3543098-1578-415c-8fee-33621d4ae056
+
 ## What it does
 
 - **Zombie bots** hunt the nearest human on foot. They run straight at a human when the line is
