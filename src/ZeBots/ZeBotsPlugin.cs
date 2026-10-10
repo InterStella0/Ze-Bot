@@ -35,7 +35,12 @@ namespace ZeBots;
 public sealed class ZeBotsPlugin : BasePlugin
 {
     public override string ModuleName => "ZeBots";
-    public override string ModuleVersion => "0.5.0";
+    // From <Version> in Directory.Build.props, so the release tag, archive and plugin agree.
+    public override string ModuleVersion { get; } =
+        typeof(ZeBotsPlugin).Assembly
+            .GetCustomAttributes(typeof(System.Reflection.AssemblyInformationalVersionAttribute), false)
+            .Cast<System.Reflection.AssemblyInformationalVersionAttribute>()
+            .FirstOrDefault()?.InformationalVersion ?? "unknown";
     public override string ModuleAuthor => "InterStella0";
     public override string ModuleDescription => "Zombie Escape bot AI: zombies hunt humans, human bots follow real players and shoot zombies";
 

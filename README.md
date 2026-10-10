@@ -96,6 +96,37 @@ already be installed.
 tar -xzf dist/ZeBots.tar.gz -C /path/to/game/csgo
 ```
 
+## Releasing
+
+The version is `<Version>` in `Directory.Build.props`; the plugin reports it as its module version.
+CI (`.github/workflows/ci.yml`) runs `build.sh` on every push and PR. To release, bump the version,
+merge, then tag it:
+
+```sh
+git tag v0.6.0 && git push origin v0.6.0
+```
+
+`release.yml` checks that the tag matches `<Version>`, builds, and publishes a GitHub release with
+`ZeBots.tar.gz` and `ZeBots.tar.gz.sha256`.
+
+## Using a release from cs2ze-test
+
+The cs2ze-test worker copies a `ZeBots.tar.gz` into each session's bundle and its `install-mods.sh`
+extracts it into the game container. Once the plugin lives here, replace the `zebots` build stage in
+cs2ze-test's `Dockerfile` with a pinned download:
+
+```dockerfile
+FROM base AS zebots
+ARG ZEBOTS_VERSION=0.5.0
+ARG ZEBOTS_SHA256=<contents of the release's ZeBots.tar.gz.sha256>
+ADD --checksum=sha256:${ZEBOTS_SHA256} \
+    https://github.com/InterStella0/Ze-Bot/releases/download/v${ZEBOTS_VERSION}/ZeBots.tar.gz \
+    /src/dist/ZeBots.tar.gz
+```
+
+The `COPY --from=zebots /src/dist/ZeBots.tar.gz ...` line in the worker stage stays as it is. To
+update the server: bump the two args, `git pull`, `docker compose up -d --build`.
+
 ## Convars
 
 These are registered by the plugin when it loads, so set them from `server.cfg` or RCON.
